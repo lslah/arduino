@@ -11,6 +11,16 @@ void toggle_register_bit(volatile uint8_t *reg, uint8_t bit)
   (*reg) ^= _BV(bit);
 }
 
+void set_register_bit(volatile uint8_t *reg, uint8_t bit)
+{
+  (*reg) |= _BV(bit);
+}
+
+void unset_register_bit(volatile uint8_t *reg, uint8_t bit)
+{
+  (*reg) &= ~_BV(bit);
+}
+
 void sleep_us(unsigned int us) {
   unsigned int i = 0;
   for (i = 0; i < us; i++)
@@ -35,9 +45,12 @@ int main(void)
 
   unsigned int degree = 0;
   while (1) {
+    set_register_bit(&PORTB, PORTB5);
     for (degree = 0; degree < 180; degree++) {
       servo_move_to(degree);
     }
+
+    unset_register_bit(&PORTB, PORTB5);
     for (degree = 179; degree > 0; degree--) {
       servo_move_to(degree);
     }
