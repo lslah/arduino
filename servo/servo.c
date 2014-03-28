@@ -29,7 +29,7 @@ void sleep_us(unsigned int us) {
 
 void servo_move_to(unsigned int degree)
 {
-  unsigned int us = (degree * 5) + 1000;
+  unsigned int us = (degree * 11) + 300;
   toggle_register_bit(&PORTB, PORTB0);
   sleep_us(us);
   toggle_register_bit(&PORTB, PORTB0);
