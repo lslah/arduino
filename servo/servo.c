@@ -11,13 +11,13 @@ void toggle_register_bit(volatile uint8_t *reg, uint8_t bit)
   (*reg) ^= _BV(bit);
 }
 
-void sleep_us(int us) {
+void sleep_us(unsigned int us) {
   int i = 0;
   for (i = 0; i < us; i++)
     _delay_us(1);
 }
 
-void servo_move_to(int degree)
+void servo_move_to(unsigned int degree)
 {
   unsigned int us = (degree*11)+500;
   toggle_register_bit(&PORTB, PORTB0);
