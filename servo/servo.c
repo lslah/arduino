@@ -12,7 +12,7 @@ void toggle_register_bit(volatile uint8_t *reg, uint8_t bit)
 }
 
 void sleep_us(unsigned int us) {
-  int i = 0;
+  unsigned int i = 0;
   for (i = 0; i < us; i++)
     _delay_us(1);
 }
@@ -38,7 +38,7 @@ int main(void)
     for (degree = 0; degree < 180; degree++) {
       servo_move_to(degree);
     }
-    for (degree = 179; degree >= 0; degree--) {
+    for (degree = 179; degree > 0; degree--) {
       servo_move_to(degree);
     }
   }
