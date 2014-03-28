@@ -1,5 +1,5 @@
 OBJDIR := build
-APPS = $(OBJDIR)/test.hex
+APPS = $(OBJDIR)/test.hex $(OBJDIR)/serial_test.hex
 
 all: $(APPS)
 
